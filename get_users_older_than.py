@@ -1,3 +1,4 @@
+from from_json import read_json as rj
 def get_users_older_than(data:dict, age:int)->list:
     """Gets all users older than a certain age from the data
     Args:
@@ -6,4 +7,10 @@ def get_users_older_than(data:dict, age:int)->list:
     Returns:
         list: A list of users
     """
-    pass
+    a=[]
+    for i in data['users']:
+        if i['age']>=age:
+            a.append(i)
+    return a 
+data = rj('users.json')
+print(get_users_older_than(data,25))
